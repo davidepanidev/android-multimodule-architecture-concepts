@@ -1,9 +1,6 @@
-# Android Multimodule Architecture Concepts
-Android Multimodule Architecture Concepts is a project to showcase different architectural approaches to developing multi-modular Android apps.
+# Layered Architecture Concepts
 
-The multi-module architecture proposed consists of 3 different layers:
-* **Presentation layer**: contains all the Android UI framework components (i.e. Activities, Fragments, ViewModels...) and the related resources (i.e. images, strings...).
-* **Domain layer**: contains the platform-independent business logic and models.
-* **Data layer**: contains the repositories, the data source api implementations and the corresponding api-specific models.
-
-These layers are implemented using 3 different modules to increase the decoupling and the separation of concerns. The dependencies between the modules are set in order to make the data layer's classes completely invisible to the presentation layer's ones and vice versa.
+This architecture concept is composed by 3 modules:
+* **app**: contains the _presentation layer_. It contains the Android UI framework components (_Activities_, _Fragments_, _ViewModels_...), the Android _Application_ component and all the framework specific configurations.
+* **domain**: represents the _domain layer_. It contains _Use Cases_ (platform-independent business logic) and _Entities_ (platform-independent business models). Ideally this module would be a pure Kotlin library because it has to be platform-independent. However in this concept it has to be an Android module because it depends on the _data_ module which is an Android module itself.
+* **data**: represents the _data layer_. It contains _Repositories_ and their corresponding interfaces, the data source _Api_ implementations and the corresponding api-specific models.

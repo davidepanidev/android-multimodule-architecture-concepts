@@ -16,3 +16,4 @@ rootProject.name = "Android Multimodule Architecture Concepts"
 include ':app'
 include ':domain'
 include ':data'
+include ':presentation'

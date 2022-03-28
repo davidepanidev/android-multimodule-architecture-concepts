@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        dagger_version = "2.38.1"
+        dagger_version = '2.41'
         core_ktx_version = "1.7.0"
         junit_version = "4.13.2"
         appcompat_version = "1.4.1"

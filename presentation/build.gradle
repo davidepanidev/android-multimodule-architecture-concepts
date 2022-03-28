@@ -40,6 +40,10 @@ dependencies {
 
     implementation(project(":domain"))
 
+    implementation 'com.github.davide-pani:android-extensions:1.1.1'
+    implementation 'com.github.davide-pani:kotlin-extensions:1.0'
+    implementation 'com.github.davide-pani:android-architectures:1.0'
+
     implementation "com.google.dagger:hilt-android:$dagger_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ktx_version"

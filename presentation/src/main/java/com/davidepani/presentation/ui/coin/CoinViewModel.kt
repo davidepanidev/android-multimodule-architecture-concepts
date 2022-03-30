@@ -19,6 +19,10 @@ class CoinViewModel @Inject constructor(
     val coinLD: LiveData<Coin> = _coinLD
 
 
+    init {
+        getCoin()
+    }
+
     fun getCoin() {
         viewModelScope.launch {
             val coin = getCoinUseCase()

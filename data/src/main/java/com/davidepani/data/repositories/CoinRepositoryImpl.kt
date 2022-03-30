@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CoinRepositoryImpl @Inject constructor() : CoinRepository {
 
     override suspend fun retrieveCoin(): CoinResponse {
-        TODO("Not yet implemented")
+        return CoinResponse(name = "Bitcoin")
     }
 
 }

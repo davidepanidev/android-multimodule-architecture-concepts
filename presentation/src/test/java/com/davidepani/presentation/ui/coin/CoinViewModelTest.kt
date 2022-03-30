@@ -26,7 +26,7 @@ class CoinViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun getCoin() = runBlockingTest {
+    fun getCoin() {
         val expectedCoin = Coin(name = "Bitcoin")
         coEvery { getCoinUseCase.invoke() } returns expectedCoin
 

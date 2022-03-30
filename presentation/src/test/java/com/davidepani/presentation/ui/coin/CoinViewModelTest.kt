@@ -1,8 +1,8 @@
 package com.davidepani.presentation.ui.coin
 
+import com.davidepani.androidextensions.tests.BaseViewModelTest
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.usecases.GetCoinUseCase
-import com.davidepani.presentation.BaseViewModelTest
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

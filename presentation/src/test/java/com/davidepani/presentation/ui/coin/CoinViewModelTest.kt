@@ -1,26 +1,18 @@
 package com.davidepani.presentation.ui.coin
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.usecases.GetCoinUseCase
-import com.davidepani.presentation.TestCoroutineRule
+import com.davidepani.presentation.BaseViewModelTest
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class CoinViewModelTest {
-
-    @get:Rule
-    val testCoroutineRule = TestCoroutineRule()
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+class CoinViewModelTest : BaseViewModelTest() {
 
     private lateinit var cut: CoinViewModel
     @MockK private lateinit var getCoinUseCase: GetCoinUseCase
@@ -34,7 +26,7 @@ class CoinViewModelTest {
     }
 
     @Test
-    fun getCoin() = testCoroutineRule.runBlockingTest {
+    fun getCoin() = runBlockingTest {
         val expectedCoin = Coin(name = "Bitcoin")
         coEvery { getCoinUseCase.invoke() } returns expectedCoin
 

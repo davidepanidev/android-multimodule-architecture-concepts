@@ -24,6 +24,7 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
+        viewModel.getCoin()
     }
 
     private fun observeData() {

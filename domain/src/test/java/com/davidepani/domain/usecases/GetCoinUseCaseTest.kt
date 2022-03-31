@@ -8,10 +8,10 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
 
@@ -33,7 +33,7 @@ class GetCoinUseCaseTest {
     }
 
     @Test
-    fun correctInvoke() = runBlockingTest {
+    fun invoke_returnsExpectedCoin() = runBlockingTest {
         val coinResponse = CoinResponse(name = "Bitcoin")
         val expectedCoin = Coin(name = "Bitcoin")
 
@@ -42,7 +42,7 @@ class GetCoinUseCaseTest {
         
         val actualCoin = cut.invoke()
 
-        assertEquals(expectedCoin, actualCoin)
+        assertThat(actualCoin, `is`(expectedCoin))
     }
 
 }

@@ -7,7 +7,8 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Assert.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
 
@@ -26,13 +27,13 @@ class CoinViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun getCoin() {
+    fun getCoin_setsExpectedCoinValue() {
         val expectedCoin = Coin(name = "Bitcoin")
         coEvery { getCoinUseCase.invoke() } returns expectedCoin
 
         cut.getCoin()
 
-        assertEquals(expectedCoin, cut.coinLD.value)
+        assertThat(cut.coinLD.value, `is`(expectedCoin))
     }
 
 }

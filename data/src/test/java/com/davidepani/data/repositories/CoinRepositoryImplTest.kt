@@ -1,7 +1,7 @@
 package com.davidepani.data.repositories
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
@@ -18,7 +18,7 @@ class CoinRepositoryImplTest {
     }
 
     @Test
-    fun retrieveCoin_returnCoinWithNotEmptyName() = runBlockingTest {
+    fun retrieveCoin_returnCoinWithNotEmptyName() = runTest {
         val actualResponse = cut.retrieveCoin()
         expectThat(actualResponse.name).isNotEmpty()
     }

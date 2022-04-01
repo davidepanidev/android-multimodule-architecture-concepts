@@ -9,7 +9,7 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
@@ -33,7 +33,7 @@ class GetCoinUseCaseTest {
     }
 
     @Test
-    fun invoke_returnsExpectedCoin() = runBlockingTest {
+    fun invoke_returnsExpectedCoin() = runTest {
         val coinResponse = CoinResponse(name = "Bitcoin")
         val expectedCoin = Coin(name = "Bitcoin")
 

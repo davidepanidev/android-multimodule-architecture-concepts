@@ -4,10 +4,10 @@ import com.davidepani.data.interfaces.CoinRepository
 import com.davidepani.data.models.CoinResponse
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.mappers.DataMapper
-import io.mockk.clearAllMocks
+import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.mockk
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -19,13 +19,12 @@ import strikt.assertions.isEqualTo
 class GetCoinUseCaseTest {
 
     private lateinit var cut: GetCoinUseCase
-    private val coinRepository: CoinRepository = mockk()
-    private val dataMapper: DataMapper = mockk()
-
+    @MockK private lateinit var coinRepository: CoinRepository
+    @MockK private lateinit var dataMapper: DataMapper
 
     @Before
     fun setUp() {
-        clearAllMocks()
+        MockKAnnotations.init(this)
 
         cut = GetCoinUseCase(
             coinRepository = coinRepository,

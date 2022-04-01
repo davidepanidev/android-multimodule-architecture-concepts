@@ -10,10 +10,10 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 @ExperimentalCoroutinesApi
 class GetCoinUseCaseTest {
@@ -42,7 +42,7 @@ class GetCoinUseCaseTest {
         
         val actualCoin = cut.invoke()
 
-        assertThat(actualCoin, `is`(expectedCoin))
+        expectThat(actualCoin).isEqualTo(expectedCoin)
     }
 
 }

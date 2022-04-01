@@ -7,10 +7,10 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 @ExperimentalCoroutinesApi
 class CoinViewModelTest : BaseViewModelTest() {
@@ -33,7 +33,7 @@ class CoinViewModelTest : BaseViewModelTest() {
 
         cut.getCoin()
 
-        assertThat(cut.coinLD.value, `is`(expectedCoin))
+        expectThat(cut.coinLD.value).isEqualTo(expectedCoin)
     }
 
 }

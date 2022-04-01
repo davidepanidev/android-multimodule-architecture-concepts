@@ -2,10 +2,10 @@ package com.davidepani.domain.mappers
 
 import com.davidepani.data.models.CoinResponse
 import com.davidepani.domain.entities.Coin
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 class DataMapperTest {
 
@@ -30,7 +30,7 @@ class DataMapperTest {
             coinResponse = coinResponse
         )
 
-        assertThat(actualCoin, `is`(expectedCoin))
+        expectThat(actualCoin).isEqualTo(expectedCoin)
     }
 
 }

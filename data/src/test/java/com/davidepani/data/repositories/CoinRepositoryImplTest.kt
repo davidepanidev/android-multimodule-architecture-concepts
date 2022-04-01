@@ -2,9 +2,10 @@ package com.davidepani.data.repositories
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isNotEmpty
 
 @ExperimentalCoroutinesApi
 class CoinRepositoryImplTest {
@@ -19,7 +20,7 @@ class CoinRepositoryImplTest {
     @Test
     fun retrieveCoin_returnCoinWithNotEmptyName() = runBlockingTest {
         val actualResponse = cut.retrieveCoin()
-        assertThat("the retrieved coin should not have an empty name", actualResponse.name.isNotEmpty())
+        expectThat(actualResponse.name).isNotEmpty()
     }
 
 }

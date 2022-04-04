@@ -1,6 +1,5 @@
 package com.davidepani.androidmultimodulearchitectureconcepts.di
 
-import com.davidepani.data.api.COINGECKO_API_BASE_URL
 import com.davidepani.data.api.CoinGeckoApiService
 import dagger.Module
 import dagger.Provides
@@ -18,7 +17,7 @@ object DataApiModule {
     @Singleton
     fun provideCoinGeckoApiService(): CoinGeckoApiService = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(COINGECKO_API_BASE_URL)
+        .baseUrl(CoinGeckoApiService.BASE_URL)
         .build()
         .create(CoinGeckoApiService::class.java)
 

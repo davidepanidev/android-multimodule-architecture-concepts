@@ -1,30 +1,51 @@
 package com.davidepani.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class CoinApiResponse(
     val ath: Int,
-    val ath_change_percentage: Double,
-    val ath_date: String,
+    @SerializedName("ath_change_percentage")
+    val athChangePercentage: Double,
+    @SerializedName("ath_date")
+    val athDate: String,
     val atl: Double,
-    val atl_change_percentage: Double,
-    val atl_date: String,
-    val circulating_supply: Int,
-    val current_price: Int,
-    val fully_diluted_valuation: Long,
-    val high_24h: Int,
+    @SerializedName("atl_change_percentage")
+    val atlChangePercentage: Double,
+    @SerializedName("atl_date")
+    val atlDate: String,
+    @SerializedName("circulating_supply")
+    val circulatingSupply: Int,
+    @SerializedName("current_price")
+    val currentPrice: Int,
+    @SerializedName("fully_diluted_valuation")
+    val fullyDilutedValuation: Long,
+    @SerializedName("high_24h")
+    val high24h: Int,
     val id: String,
     val image: String,
-    val last_updated: String,
-    val low_24h: Int,
-    val market_cap: Long,
-    val market_cap_change_24h: Double,
-    val market_cap_change_percentage_24h: Double,
-    val market_cap_rank: Int,
-    val max_supply: Int,
+    @SerializedName("last_updated")
+    val lastUpdated: String,
+    @SerializedName("low_24h")
+    val low24h: Int,
+    @SerializedName("market_cap")
+    val marketCap: Long,
+    @SerializedName("market_cap_change_24h")
+    val marketCapChange24h: Double,
+    @SerializedName("market_cap_change_percentage_24h")
+    val marketCapChangePercentage24h: Double,
+    @SerializedName("market_cap_rank")
+    val marketCapRank: Int,
+    @SerializedName("max_supply")
+    val maxSupply: Int,
     val name: String,
-    val price_change_24h: Double,
-    val price_change_percentage_24h: Double,
+    @SerializedName("price_change_24h")
+    val priceChange24h: Double,
+    @SerializedName("price_change_percentage_24h")
+    val priceChangePercentage24h: Double,
     val roi: Any,
     val symbol: String,
-    val total_supply: Int,
-    val total_volume: Long
+    @SerializedName("total_supply")
+    val totalSupply: Int,
+    @SerializedName("total_volume")
+    val totalVolume: Long
 )

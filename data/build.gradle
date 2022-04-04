@@ -35,6 +35,9 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
     testImplementation "junit:junit:$junit_version"
     testImplementation "io.strikt:strikt-core:$strikt_version"
     testImplementation "io.mockk:mockk:$mockk_version"

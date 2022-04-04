@@ -13,6 +13,7 @@ buildscript {
         coroutines_test_version = "1.6.0"
         arch_core_testing_version = "2.1.0"
         strikt_version = "0.34.1"
+        retrofit_version = "2.9.0"
     }
 
     dependencies {

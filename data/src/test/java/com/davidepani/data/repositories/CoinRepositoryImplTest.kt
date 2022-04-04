@@ -19,7 +19,7 @@ class CoinRepositoryImplTest {
 
     @Test
     fun retrieveCoin_returnCoinWithNotEmptyName() = runTest {
-        val actualResponse = cut.retrieveCoin()
+        val actualResponse = cut.retrieveMostCapitalizedCoin()
         expectThat(actualResponse.name).isNotEmpty()
     }
 

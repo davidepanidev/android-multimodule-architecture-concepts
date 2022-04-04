@@ -12,7 +12,7 @@ class GetCoinUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): Coin {
-        val coinResponse = coinRepository.retrieveCoin()
+        val coinResponse = coinRepository.retrieveMostCapitalizedCoin()
         return dataMapper.mapCoin(coinResponse)
     }
 

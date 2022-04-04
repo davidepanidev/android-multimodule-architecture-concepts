@@ -37,7 +37,7 @@ class GetCoinUseCaseTest {
         val coinResponse = CoinApiResponse(name = "Bitcoin")
         val expectedCoin = Coin(name = "Bitcoin")
 
-        coEvery { coinRepository.retrieveCoin() } returns coinResponse
+        coEvery { coinRepository.retrieveMostCapitalizedCoin() } returns coinResponse
         every { dataMapper.mapCoin(coinResponse = coinResponse) } returns expectedCoin
         
         val actualCoin = cut.invoke()

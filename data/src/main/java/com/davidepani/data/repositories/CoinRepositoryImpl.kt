@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class CoinRepositoryImpl @Inject constructor() : CoinRepository {
 
-    override suspend fun retrieveCoin(): CoinApiResponse {
+    override suspend fun retrieveMostCapitalizedCoin(): CoinApiResponse {
         return CoinApiResponse(name = "Bitcoin")
     }
 

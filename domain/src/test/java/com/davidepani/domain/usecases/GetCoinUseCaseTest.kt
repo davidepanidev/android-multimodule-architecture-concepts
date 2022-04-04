@@ -18,7 +18,7 @@ import strikt.assertions.isEqualTo
 @ExperimentalCoroutinesApi
 class GetCoinUseCaseTest {
 
-    private lateinit var cut: GetCoinUseCase
+    private lateinit var cut: GetMostCapitalizedCoinUseCase
     @MockK private lateinit var coinRepository: CoinRepository
     @MockK private lateinit var dataMapper: DataMapper
 
@@ -26,7 +26,7 @@ class GetCoinUseCaseTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = GetCoinUseCase(
+        cut = GetMostCapitalizedCoinUseCase(
             coinRepository = coinRepository,
             dataMapper = dataMapper
         )

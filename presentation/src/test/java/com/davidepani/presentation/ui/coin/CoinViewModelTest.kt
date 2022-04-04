@@ -2,7 +2,7 @@ package com.davidepani.presentation.ui.coin
 
 import com.davidepani.androidextensions.tests.BaseViewModelTest
 import com.davidepani.domain.entities.Coin
-import com.davidepani.domain.usecases.GetCoinUseCase
+import com.davidepani.domain.usecases.GetMostCapitalizedCoinUseCase
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -16,7 +16,7 @@ import strikt.assertions.isEqualTo
 class CoinViewModelTest : BaseViewModelTest() {
 
     private lateinit var cut: CoinViewModel
-    @MockK private lateinit var getCoinUseCase: GetCoinUseCase
+    @MockK private lateinit var getCoinUseCase: GetMostCapitalizedCoinUseCase
 
     @Before
     fun setUp() {

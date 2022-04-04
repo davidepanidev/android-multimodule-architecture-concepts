@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.davidepani.domain.entities.Coin
-import com.davidepani.domain.usecases.GetCoinUseCase
+import com.davidepani.domain.usecases.GetMostCapitalizedCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CoinViewModel @Inject constructor(
-    private val getCoinUseCase: GetCoinUseCase
+    private val getCoinUseCase: GetMostCapitalizedCoinUseCase
 ) : ViewModel() {
 
     private val _coinLD = MutableLiveData<Coin>()

@@ -1,9 +1,9 @@
 package com.davidepani.data.interfaces
 
-import com.davidepani.data.models.CoinResponse
+import com.davidepani.data.models.CoinApiResponse
 
 interface CoinRepository {
 
-    suspend fun retrieveCoin(): CoinResponse
+    suspend fun retrieveCoin(): CoinApiResponse
 
 }

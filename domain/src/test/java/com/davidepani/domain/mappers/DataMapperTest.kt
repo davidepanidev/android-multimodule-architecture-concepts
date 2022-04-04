@@ -1,6 +1,6 @@
 package com.davidepani.domain.mappers
 
-import com.davidepani.data.models.CoinResponse
+import com.davidepani.data.models.CoinApiResponse
 import com.davidepani.domain.entities.Coin
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +19,7 @@ class DataMapperTest {
     @Test
     fun mapCoin_returnsCorrectMap() {
         val coinName = "Bitcoin"
-        val coinResponse = CoinResponse(
+        val coinResponse = CoinApiResponse(
             name = coinName
         )
         val expectedCoin = Coin(

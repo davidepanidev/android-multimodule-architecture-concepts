@@ -1,7 +1,7 @@
 package com.davidepani.domain.usecases
 
 import com.davidepani.data.interfaces.CoinRepository
-import com.davidepani.data.models.CoinResponse
+import com.davidepani.data.models.CoinApiResponse
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.mappers.DataMapper
 import io.mockk.MockKAnnotations
@@ -34,7 +34,7 @@ class GetCoinUseCaseTest {
 
     @Test
     fun invoke_returnsExpectedCoin() = runTest {
-        val coinResponse = CoinResponse(name = "Bitcoin")
+        val coinResponse = CoinApiResponse(name = "Bitcoin")
         val expectedCoin = Coin(name = "Bitcoin")
 
         coEvery { coinRepository.retrieveCoin() } returns coinResponse

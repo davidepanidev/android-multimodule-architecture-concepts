@@ -1,6 +1,6 @@
 package com.davidepani.data.models
 
-data class CoinResponse(
+data class CoinApiResponse(
     val ath: Int,
     val ath_change_percentage: Double,
     val ath_date: String,

@@ -9,12 +9,12 @@ class CoinRepositoryImpl @Inject constructor(
     private val coinGeckoApiService: CoinGeckoApiService
 ) : CoinRepository {
 
-    override suspend fun retrieveMostCapitalizedCoin(): CoinApiResponse {
+    override suspend fun retrieveMostCapitalizedCoin(): Result<CoinApiResponse> {
         return try {
             val coinsList = coinGeckoApiService.getCoinsMarkets()
-            coinsList[0]
+            Result.success(coinsList[0])
         } catch(e: Exception) {
-            throw RuntimeException(e.message)
+            Result.failure(e)
         }
     }
 

@@ -4,6 +4,6 @@ import com.davidepani.data.models.CoinApiResponse
 
 interface CoinRepository {
 
-    suspend fun retrieveMostCapitalizedCoin(): CoinApiResponse
+    suspend fun retrieveMostCapitalizedCoin(): Result<CoinApiResponse>
 
 }

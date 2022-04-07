@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
+import com.davidepani.androidextensions.views.loadImageFromUrl
 import com.davidepani.architectures.viewbinding.BaseViewBindingHandlerFragment
 import com.davidepani.presentation.databinding.CoinFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +32,8 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
         with(viewModel) {
             coinLD.observe(viewLifecycleOwner) {
                 binding.tvCoinName.text = it.name
+                binding.ivCoinImage.loadImageFromUrl(it.image)
+                binding.tvCoinPrice.text = it.price.toString()
             }
         }
     }

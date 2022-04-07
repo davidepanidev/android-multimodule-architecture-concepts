@@ -47,5 +47,5 @@ data class CoinApiResponse(
     @SerializedName("total_supply")
     val totalSupply: Double,
     @SerializedName("total_volume")
-    val totalVolume: Int
+    val totalVolume: Double
 )

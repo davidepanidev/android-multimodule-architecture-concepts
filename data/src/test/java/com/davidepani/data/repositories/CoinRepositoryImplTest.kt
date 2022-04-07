@@ -23,8 +23,8 @@ class CoinRepositoryImplTest {
     private lateinit var cut: CoinRepositoryImpl
     @MockK private lateinit var coinGeckoApiService: CoinGeckoApiService
 
-    private val bitcoinApiResponse = getCoinApiResponseFromJson(bitcoinResourceJsonFilename)
-    private val ethereumApiResponse = getCoinApiResponseFromJson(ethereumResourceJsonFilename)
+    private val bitcoinApiResponse: CoinApiResponse = bitcoinResourceJsonFilename.deserializeJsonFromResources()
+    private val ethereumApiResponse: CoinApiResponse = ethereumResourceJsonFilename.deserializeJsonFromResources()
 
     @Before
     fun setUp() {
@@ -79,9 +79,6 @@ class CoinRepositoryImplTest {
         expectThat(actualResponse).isSuccess()
         expectThat(actualResponse.getOrNull()).isEqualTo(ethereumApiResponse)
     }
-
-
-    private fun getCoinApiResponseFromJson(fileName: String): CoinApiResponse = fileName.deserializeJsonFromResources()
 
 }
 

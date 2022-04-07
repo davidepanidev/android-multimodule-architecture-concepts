@@ -4,7 +4,8 @@ import com.davidepani.data.api.CoinGeckoApiService
 import com.davidepani.data.bitcoinResourceJsonFilename
 import com.davidepani.data.ethereumResourceJsonFilename
 import com.davidepani.data.models.CoinApiResponse
-import com.google.gson.Gson
+import com.davidepani.kotlinextensions.deserializeJsonFileFromSystemResources
+import com.davidepani.kotlinextensions.utils.deserializer.GsonDeserializer
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -23,8 +24,9 @@ class CoinRepositoryImplTest {
     private lateinit var cut: CoinRepositoryImpl
     @MockK private lateinit var coinGeckoApiService: CoinGeckoApiService
 
-    private val bitcoinApiResponse: CoinApiResponse = bitcoinResourceJsonFilename.deserializeJsonFromResources()
-    private val ethereumApiResponse: CoinApiResponse = ethereumResourceJsonFilename.deserializeJsonFromResources()
+    private val deserializer = GsonDeserializer()
+    private val bitcoinApiResponse: CoinApiResponse = bitcoinResourceJsonFilename.deserializeJsonFileFromSystemResources(deserializer)
+    private val ethereumApiResponse: CoinApiResponse = ethereumResourceJsonFilename.deserializeJsonFileFromSystemResources(deserializer)
 
     @Before
     fun setUp() {
@@ -80,9 +82,4 @@ class CoinRepositoryImplTest {
         expectThat(actualResponse.getOrNull()).isEqualTo(ethereumApiResponse)
     }
 
-}
-
-inline fun<reified T> String.deserializeJsonFromResources(): T {
-    val jsonText = ClassLoader.getSystemResource(this).readText()
-    return Gson().fromJson(jsonText, T::class.java)
 }

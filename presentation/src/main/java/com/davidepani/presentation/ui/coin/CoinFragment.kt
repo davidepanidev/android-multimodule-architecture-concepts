@@ -10,6 +10,8 @@ import com.davidepani.androidextensions.views.loadImageFromUrl
 import com.davidepani.architectures.viewbinding.BaseViewBindingHandlerFragment
 import com.davidepani.presentation.databinding.CoinFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.NumberFormat
+import java.util.*
 
 @AndroidEntryPoint
 class CoinFragment : BaseViewBindingHandlerFragment() {
@@ -33,7 +35,10 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
             coinLD.observe(viewLifecycleOwner) {
                 binding.tvCoinName.text = it.name
                 binding.ivCoinImage.loadImageFromUrl(it.image)
-                binding.tvCoinPrice.text = it.price.toString()
+                val currency = NumberFormat.getCurrencyInstance(Locale.getDefault())
+                currency.maximumFractionDigits = 2
+                currency.currency = Currency.getInstance("USD")
+                binding.tvCoinPrice.text = currency.format(it.price)
             }
         }
     }

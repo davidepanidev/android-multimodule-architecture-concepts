@@ -1,7 +1,10 @@
 package com.davidepani.data.repositories
 
 import com.davidepani.data.api.CoinGeckoApiService
+import com.davidepani.data.bitcoinResourceJsonFilename
+import com.davidepani.data.ethereumResourceJsonFilename
 import com.davidepani.data.models.CoinApiResponse
+import com.google.gson.Gson
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -19,6 +22,9 @@ class CoinRepositoryImplTest {
 
     private lateinit var cut: CoinRepositoryImpl
     @MockK private lateinit var coinGeckoApiService: CoinGeckoApiService
+
+    private val bitcoinApiResponse = getCoinApiResponseFromJson(bitcoinResourceJsonFilename)
+    private val ethereumApiResponse = getCoinApiResponseFromJson(ethereumResourceJsonFilename)
 
     @Before
     fun setUp() {
@@ -52,85 +58,34 @@ class CoinRepositoryImplTest {
     @Test
     fun `retrieveMostCapitalizedCoin with one item list returns Success with first item`() = runTest {
         coEvery { coinGeckoApiService.getCoinsMarkets() } returns listOf(
-            getCoinApiResponse_Bitcoin()
+            bitcoinApiResponse
         )
 
         val actualResponse = cut.retrieveMostCapitalizedCoin()
 
         expectThat(actualResponse).isSuccess()
-        expectThat(actualResponse.getOrNull()).isEqualTo(getCoinApiResponse_Bitcoin())
+        expectThat(actualResponse.getOrNull()).isEqualTo(bitcoinApiResponse)
     }
 
     @Test
     fun `retrieveMostCapitalizedCoin with two items list returns Success with first item`() = runTest {
         coEvery { coinGeckoApiService.getCoinsMarkets() } returns listOf(
-            getCoinApiResponse_Ethereum(),
-            getCoinApiResponse_Bitcoin()
+            ethereumApiResponse,
+            bitcoinApiResponse
         )
 
         val actualResponse = cut.retrieveMostCapitalizedCoin()
 
         expectThat(actualResponse).isSuccess()
-        expectThat(actualResponse.getOrNull()).isEqualTo(getCoinApiResponse_Ethereum())
+        expectThat(actualResponse.getOrNull()).isEqualTo(ethereumApiResponse)
     }
 
 
-    private fun getCoinApiResponse_Bitcoin() = CoinApiResponse(
-        name = "Bitcoin",
-        ath = 0.0,
-        athChangePercentage = 0.0,
-        athDate = "",
-        atl = 0.0,
-        atlChangePercentage = 0.0,
-        atlDate = "",
-        circulatingSupply = 0.0,
-        currentPrice = 0.0,
-        fullyDilutedValuation = 0,
-        high24h = 0.0,
-        id = "",
-        image = "",
-        lastUpdated = "",
-        low24h = 0.0,
-        marketCap = 0,
-        marketCapChange24h = 0.0,
-        marketCapChangePercentage24h = 0.0,
-        marketCapRank = 0,
-        maxSupply = 0.0,
-        priceChange24h = 0.0,
-        priceChangePercentage24h = 0.0,
-        roi = "",
-        symbol = "",
-        totalSupply = 0.0,
-        totalVolume = 0.0
-    )
+    private fun getCoinApiResponseFromJson(fileName: String): CoinApiResponse = fileName.deserializeJsonFromResources()
 
-    private fun getCoinApiResponse_Ethereum() = CoinApiResponse(
-        name = "Ethereum",
-        ath = 0.0,
-        athChangePercentage = 0.0,
-        athDate = "",
-        atl = 0.0,
-        atlChangePercentage = 0.0,
-        atlDate = "",
-        circulatingSupply = 0.0,
-        currentPrice = 0.0,
-        fullyDilutedValuation = 0,
-        high24h = 0.0,
-        id = "",
-        image = "",
-        lastUpdated = "",
-        low24h = 0.0,
-        marketCap = 0,
-        marketCapChange24h = 0.0,
-        marketCapChangePercentage24h = 0.0,
-        marketCapRank = 0,
-        maxSupply = 0.0,
-        priceChange24h = 0.0,
-        priceChangePercentage24h = 0.0,
-        roi = "",
-        symbol = "",
-        totalSupply = 0.0,
-        totalVolume = 0.0
-    )
+}
 
+inline fun<reified T> String.deserializeJsonFromResources(): T {
+    val jsonText = ClassLoader.getSystemResource(this).readText()
+    return Gson().fromJson(jsonText, T::class.java)
 }

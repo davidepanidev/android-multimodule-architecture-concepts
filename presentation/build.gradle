@@ -41,7 +41,7 @@ dependencies {
     implementation(project(":domain"))
 
     // davide-pani
-    implementation 'com.github.davide-pani:android-extensions:1.2.1'
+    implementation "com.github.davide-pani:android-extensions:1.2.2"
     implementation "com.github.davide-pani:kotlin-extensions:$kotlin_extensions_version"
     implementation 'com.github.davide-pani:android-architectures:1.0'
 

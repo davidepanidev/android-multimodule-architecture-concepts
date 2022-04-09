@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
+import com.davidepani.androidextensions.utils.imageloader.GlideImageLoader
 import com.davidepani.androidextensions.views.loadImageFromUrl
 import com.davidepani.architectures.viewbinding.BaseViewBindingHandlerFragment
 import com.davidepani.presentation.databinding.CoinFragmentBinding
@@ -34,7 +35,10 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
         with(viewModel) {
             coinLD.observe(viewLifecycleOwner) {
                 binding.tvCoinName.text = it.name
-                binding.ivCoinImage.loadImageFromUrl(it.image)
+                binding.ivCoinImage.loadImageFromUrl(
+                    url = it.image,
+                    imageLoader = GlideImageLoader()
+                )
                 val currency = NumberFormat.getCurrencyInstance(Locale.getDefault())
                 currency.maximumFractionDigits = 2
                 currency.currency = Currency.getInstance("USD")

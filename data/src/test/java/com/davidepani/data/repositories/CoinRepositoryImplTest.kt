@@ -40,7 +40,7 @@ class CoinRepositoryImplTest {
     @Test
     fun `retrieveMostCapitalizedCoin with Exception returns Failure with expected exception`() = runTest {
         val expectedException = Exception("test exception")
-        coEvery { coinGeckoApiService.getCoinsMarkets() } throws expectedException
+        coEvery { coinGeckoApiService.getCoinsMarkets(any(), any(), any()) } throws expectedException
 
         val actualResponse = cut.retrieveMostCapitalizedCoin()
 
@@ -50,7 +50,7 @@ class CoinRepositoryImplTest {
 
     @Test
     fun `retrieveMostCapitalizedCoin with empty list returns Failure`() = runTest {
-        coEvery { coinGeckoApiService.getCoinsMarkets() } returns emptyList()
+        coEvery { coinGeckoApiService.getCoinsMarkets(any(), any(), any()) } returns emptyList()
 
         val actualResponse = cut.retrieveMostCapitalizedCoin()
 
@@ -59,7 +59,7 @@ class CoinRepositoryImplTest {
 
     @Test
     fun `retrieveMostCapitalizedCoin with one item list returns Success with first item`() = runTest {
-        coEvery { coinGeckoApiService.getCoinsMarkets() } returns listOf(
+        coEvery { coinGeckoApiService.getCoinsMarkets(any(), any(), any()) } returns listOf(
             bitcoinApiResponse
         )
 
@@ -71,7 +71,7 @@ class CoinRepositoryImplTest {
 
     @Test
     fun `retrieveMostCapitalizedCoin with two items list returns Success with first item`() = runTest {
-        coEvery { coinGeckoApiService.getCoinsMarkets() } returns listOf(
+        coEvery { coinGeckoApiService.getCoinsMarkets(any(), any(), any()) } returns listOf(
             ethereumApiResponse,
             bitcoinApiResponse
         )

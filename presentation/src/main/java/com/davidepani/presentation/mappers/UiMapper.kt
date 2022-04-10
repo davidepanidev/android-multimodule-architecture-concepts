@@ -1,22 +1,19 @@
 package com.davidepani.presentation.mappers
 
 import com.davidepani.domain.entities.Coin
+import com.davidepani.kotlinextensions.formatToCurrency
+import com.davidepani.kotlinextensions.utils.currencyformatter.CurrencyFormatter
 import com.davidepani.presentation.models.CoinUi
-import java.text.NumberFormat
-import java.util.*
 import javax.inject.Inject
 
-class UiMapper @Inject constructor() {
+class UiMapper @Inject constructor(
+    private val currencyFormatter: CurrencyFormatter
+) {
 
     fun mapCoinUi(coin: Coin): CoinUi {
-        val currency = NumberFormat.getCurrencyInstance(Locale.getDefault())
-        currency.maximumFractionDigits = 2
-        currency.currency = Currency.getInstance("USD")
-        val marketCap = currency.format(coin.marketCap)
-
         return CoinUi(
             name = coin.name,
-            marketCap = marketCap,
+            marketCap = coin.marketCap.formatToCurrency(currencyFormatter = currencyFormatter),
             imageUrl = coin.image
         )
     }

@@ -1,5 +1,7 @@
 package com.davidepani.androidmultimodulearchitectureconcepts.di
 
+import com.davidepani.androidextensions.utils.imageloader.GlideImageLoader
+import com.davidepani.androidextensions.utils.imageloader.ImageLoader
 import com.davidepani.kotlinextensions.utils.currencyformatter.CurrencyFormatter
 import com.davidepani.kotlinextensions.utils.currencyformatter.CustomCurrencyFormatter
 import com.davidepani.kotlinextensions.utils.currencyformatter.models.CurrencySymbolPosition
@@ -22,6 +24,12 @@ object UtilsModule {
             currencySymbolPosition = CurrencySymbolPosition.RIGHT,
             currencySymbolSpacing = CurrencySymbolSpacing.ENABLED
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideImageLoader(): ImageLoader {
+        return GlideImageLoader()
     }
 
 }

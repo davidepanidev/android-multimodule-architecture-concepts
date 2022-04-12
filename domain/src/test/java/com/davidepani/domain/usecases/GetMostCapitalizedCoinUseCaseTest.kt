@@ -19,7 +19,7 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
 @ExperimentalCoroutinesApi
-class GetCoinUseCaseTest {
+class GetMostCapitalizedCoinUseCaseTest {
 
     private lateinit var cut: GetMostCapitalizedCoinUseCase
     @MockK private lateinit var coinRepository: CoinRepository

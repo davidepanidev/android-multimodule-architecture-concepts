@@ -46,6 +46,10 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
                 }
             }
 
+            errorLD.observe(viewLifecycleOwner) {
+                binding.tvCoinName.text = it
+            }
+
         }
     }
 

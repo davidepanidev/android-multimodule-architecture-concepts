@@ -1,6 +1,5 @@
 package com.davidepani.presentation.ui.coin
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,12 +21,15 @@ class CoinViewModel @Inject constructor(
     private val _coinLD = MutableLiveData<CoinUi>()
     val coinLD: LiveData<CoinUi> = _coinLD
 
+    private val _errorLD = MutableLiveData<String>()
+    val errorLD: LiveData<String> = _errorLD
+
 
     fun getCoin() {
         viewModelScope.launch {
             when (val result = getMostCapitalizedCoinUseCase()) {
                 is Result.Success -> _coinLD.value = mapper.mapCoinUi(coin = result.value)
-                is Result.Failure -> Log.e("CoinViewModel", result.error.toString())
+                is Result.Failure -> _errorLD.value = result.error?.message
             }
         }
     }

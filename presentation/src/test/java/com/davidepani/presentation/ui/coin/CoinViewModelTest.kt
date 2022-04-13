@@ -56,6 +56,9 @@ class CoinViewModelTest : BaseViewModelTest() {
         cut.getCoin()
 
         expectThat(cut.coinLD.value).isEqualTo(expectedCoin)
+        expectThat(cut.errorLD.value).isEqualTo(null)
+        expectThat(cut.isProgressVisible.value).isEqualTo(false)
+        expectThat(cut.isCoinContentVisible.value).isEqualTo(true)
     }
 
     @Test
@@ -66,6 +69,36 @@ class CoinViewModelTest : BaseViewModelTest() {
         cut.getCoin()
 
         expectThat(cut.errorLD.value).isEqualTo(expectedException.message)
+        expectThat(cut.coinLD.value).isEqualTo(null)
+        expectThat(cut.isCoinContentVisible.value).isEqualTo(false)
+        expectThat(cut.isProgressVisible.value).isEqualTo(false)
+    }
+
+    @Test
+    fun `onRetryButtonClick with Success result sets expected LiveData Coin value`() = runTest {
+        val coin = Coin(
+            name = "Bitcoin",
+            price = 0.0,
+            marketCap = 1200,
+            image = ""
+        )
+
+        coEvery { getMostCapitalizedCoinUseCase.invoke() } returns Result.Success(coin)
+
+        val expectedCoin = CoinUi(
+            name = "Bitcoin",
+            marketCap = "1,200.00 $",
+            imageUrl = ""
+        )
+
+        every { mapper.mapCoinUi(coin = coin) } returns expectedCoin
+
+        cut.onRetryButtonClick()
+
+        expectThat(cut.coinLD.value).isEqualTo(expectedCoin)
+        expectThat(cut.errorLD.value).isEqualTo(null)
+        expectThat(cut.isProgressVisible.value).isEqualTo(false)
+        expectThat(cut.isCoinContentVisible.value).isEqualTo(true)
     }
 
 }

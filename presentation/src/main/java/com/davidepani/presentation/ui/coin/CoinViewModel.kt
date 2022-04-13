@@ -53,6 +53,10 @@ class CoinViewModel @Inject constructor(
         }
     }
 
+    fun onRetryButtonClick() {
+        getCoin()
+    }
+
     private fun showProgress() {
         _isProgressVisible.value = true
     }

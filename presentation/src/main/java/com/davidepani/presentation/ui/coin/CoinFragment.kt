@@ -9,7 +9,9 @@ import androidx.viewbinding.ViewBinding
 import com.davidepani.androidextensions.utils.imageloader.ImageLoader
 import com.davidepani.androidextensions.views.loadImageFromUrl
 import com.davidepani.architectures.viewbinding.BaseViewBindingHandlerFragment
+import com.davidepani.presentation.R
 import com.davidepani.presentation.databinding.CoinFragmentBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -47,7 +49,10 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
             }
 
             errorLD.observe(viewLifecycleOwner) {
-                binding.tvCoinName.text = it
+                Snackbar.make(binding.root, it, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.retry) {
+                        viewModel.onRetryButtonClick()
+                    }.show()
             }
 
             isProgressVisible.observe(viewLifecycleOwner) {

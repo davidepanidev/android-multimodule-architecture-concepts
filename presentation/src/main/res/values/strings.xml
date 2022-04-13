@@ -2,4 +2,5 @@
     <string name="app_name">Layered Architecture Concept</string>
     <string name="most_capitalized_coin">The most capitalized coin at the moment is:</string>
     <string name="coin_image_description">Coin\'s image</string>
+    <string name="retry">Retry</string>
 </resources>

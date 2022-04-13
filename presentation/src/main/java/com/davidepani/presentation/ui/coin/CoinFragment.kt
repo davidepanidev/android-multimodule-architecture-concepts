@@ -50,6 +50,14 @@ class CoinFragment : BaseViewBindingHandlerFragment() {
                 binding.tvCoinName.text = it
             }
 
+            isProgressVisible.observe(viewLifecycleOwner) {
+                binding.progress.visibility = if (it) View.VISIBLE else View.GONE
+            }
+
+            isCoinContentVisible.observe(viewLifecycleOwner) {
+                binding.grCoinContent.visibility = if (it) View.VISIBLE else View.GONE
+            }
+
         }
     }
 

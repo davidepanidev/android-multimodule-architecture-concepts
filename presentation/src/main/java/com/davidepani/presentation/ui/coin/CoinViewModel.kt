@@ -24,14 +24,49 @@ class CoinViewModel @Inject constructor(
     private val _errorLD = MutableLiveData<String>()
     val errorLD: LiveData<String> = _errorLD
 
+    private val _isProgressVisible = MutableLiveData<Boolean>()
+    val isProgressVisible: LiveData<Boolean> = _isProgressVisible
+
+    private val _isCoinContentVisible = MutableLiveData<Boolean>()
+    val isCoinContentVisible: LiveData<Boolean> = _isCoinContentVisible
+
+    init {
+        hideCoinContent()
+    }
+
 
     fun getCoin() {
+        showProgress()
+
         viewModelScope.launch {
             when (val result = getMostCapitalizedCoinUseCase()) {
-                is Result.Success -> _coinLD.value = mapper.mapCoinUi(coin = result.value)
-                is Result.Failure -> _errorLD.value = result.error?.message
+                is Result.Success -> {
+                    _coinLD.value = mapper.mapCoinUi(coin = result.value)
+                    showCoinContent()
+                }
+                is Result.Failure -> {
+                    _errorLD.value = result.error?.message
+                }
             }
+
+            hideProgress()
         }
+    }
+
+    private fun showProgress() {
+        _isProgressVisible.value = true
+    }
+
+    private fun hideProgress() {
+        _isProgressVisible.value = false
+    }
+
+    private fun showCoinContent() {
+        _isCoinContentVisible.value = true
+    }
+
+    private fun hideCoinContent() {
+        _isCoinContentVisible.value = false
     }
 
 }

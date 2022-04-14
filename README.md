@@ -9,11 +9,11 @@ This concept consists of structuring the App in 4 separate modules:
 
 The dependencies between the modules and the visibility among them is shown by the picture below (the _app_ module is not shown as it has global visibility over the all project):
 
-<img src="pictures/layered architecture - modules dependencies.png" height="400">
+<img src="pictures/layered architecture - modules dependencies.png" height="350">
 
 
 ## Data Flow
 
 The data flow is shown by the picture below:
 
-<img src="pictures/layered architecture - data flow.png" height="400">
+<img src="pictures/layered architecture - data flow.png" height="350">

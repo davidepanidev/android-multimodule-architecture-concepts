@@ -16,3 +16,9 @@ The project hosts each architecture concept in a separate branch (the _main_ bra
 The proposed concepts are:
 * [**Layered Architecture Concept**](https://github.com/davide-pani/android-multimodule-architecture-concepts/tree/layered-architecture-concept): the dependency between the modules is <code>_presentation_ -> _domain_ -> _data_</code>. The 3 modules are Android modules.
 * [**Clean Architecture Concept**](https://github.com/davide-pani/android-multimodule-architecture-concepts/tree/clean-architecture-concept): the dependency between the modules is <code>_presentation_ -> _domain_ <- _data_</code>. The _presentation_ and _data_ modules are Android modules whereas the _domain_ module is a Kotlin library being the innermost platform-independent module.
+  
+## Screenshots
+  
+The App just shows the most capitalized cryptocurrency in the current moment (which of course is Bitcoin 😄).
+  
+<img src="screenshots/home.png" height="500">

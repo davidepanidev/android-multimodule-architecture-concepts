@@ -19,6 +19,6 @@ The proposed concepts are:
   
 ## Screenshots
   
-The App just shows the most capitalized cryptocurrency in the current moment (which of course is Bitcoin 😄).
+The App retrieves data from the [CoinGecko API](https://www.coingecko.com/en/api) and shows the current most capitalized cryptocurrency (which of course is Bitcoin 😄).
   
 <img src="screenshots/home.png" height="500">

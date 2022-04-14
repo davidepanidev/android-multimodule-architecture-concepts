@@ -16,4 +16,4 @@ The dependencies between the modules and the visibility among them is shown by t
 
 The data flow is shown by the picture below:
 
-<img src="pictures/layered architecture - data flow.png" height="350">
+<img src="pictures/layered architecture - data flow.png">

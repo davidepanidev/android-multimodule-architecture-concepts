@@ -1,9 +1,20 @@
-# Android Multimodule Architecture Concepts
-Android Multimodule Architecture Concepts is a project to showcase different architectural approaches to developing multi-modular Android apps.
+# Clean Architecture Concept
 
-The multi-module architecture proposed consists of 3 different layers:
-* **Presentation layer**: contains all the Android UI framework components (i.e. Activities, Fragments, ViewModels...) and the related resources (i.e. images, strings...).
-* **Domain layer**: contains the platform-independent business logic and models.
-* **Data layer**: contains the repositories, the data source api implementations and the corresponding api-specific models.
+This concept consists of structuring the App in 4 separate modules:
+* **app**: Android module that contains the Android _Application_ component and all the framework specific configurations. It has visibility over all the other modules and defines the golbal dependency injection configurations.
+* **presentation**: Android module that represents the _presentation layer_. It contains the Android UI framework components (_Activities_, _Fragments_, _ViewModels_...) and the related resources (e.g. images, strings...).
+* **domain**: Kotlin module that represents the _domain layer_. It contains _Use Cases_ (platform-independent business logic), the _Entities_ (platform-independent business models) and the _Repository interfaces_.
+* **data**: Android module that represents the _data layer_. It contains _Repositories_ implementation, the data source _Api_ implementations and the corresponding api-specific models. 
 
-These layers are implemented using 3 different modules to increase the decoupling and the separation of concerns. The dependencies between the modules are set in order to make the data layer's classes completely invisible to the presentation layer's ones and vice versa.
+
+The dependencies between the modules and the visibility among them is shown by the picture below (the _app_ module is not shown as it has global visibility over the all project):
+
+<img src="pictures/clean architecture - modules dependencies.png" height="350">
+
+
+## Data Flow
+
+The data flow is shown by the picture below:
+
+<img src="pictures/clean architecture - data flow.png">
+

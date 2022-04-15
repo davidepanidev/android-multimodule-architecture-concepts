@@ -42,7 +42,7 @@ data class CoinApiResponse(
     val priceChange24h: Double,
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Double,
-    val roi: Any,
+    val roi: Any?,
     val symbol: String,
     @SerializedName("total_supply")
     val totalSupply: Double,

@@ -9,7 +9,7 @@ This concept consists of structuring the App in 4 separate modules:
 
 The dependencies between the modules and the visibility among them is shown by the picture below (the _app_ module is not shown as it has global visibility over the all project):
 
-<img src="pictures/clean architecture - modules dependencies.png" height="350">
+<img src="pictures/clean architecture - modules dependencies.png" height="300">
 
 
 ## Data Flow

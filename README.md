@@ -11,7 +11,7 @@ These layers are implemented using 3 separate modules to increase decoupling and
 
 ## Architecture concepts 
 
-The project hosts each architecture concept in a separate branch (the _main_ branch only contains an empty template for all the concepts). 
+The project hosts each architecture concept in a separate branch (this _main_ branch only contains an empty template). 
 
 The proposed concepts are:
 * [**Layered Architecture Concept**](https://github.com/davide-pani/android-multimodule-architecture-concepts/tree/layered-architecture-concept): the dependency between the modules is <code>_presentation_ -> _domain_ -> _data_</code>. The 3 modules are Android modules. The visibility among the modules is shown by the picture below:

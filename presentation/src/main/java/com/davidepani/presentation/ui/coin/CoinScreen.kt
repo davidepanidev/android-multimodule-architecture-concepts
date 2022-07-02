@@ -102,13 +102,13 @@ fun CoinContent(coin: CoinUi) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
                     text = coin.name,
-                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
                     text = coin.marketCap,
-                    style = MaterialTheme.typography.headlineLarge
+                    style = MaterialTheme.typography.headlineMedium
                 )
             }
         }

@@ -2,23 +2,62 @@ package com.davidepani.presentation.ui.coin
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.davidepani.presentation.R
 import com.davidepani.presentation.models.CoinUi
+import com.davidepani.presentation.models.CoinUiState
 import com.davidepani.presentation.theme.Material3Theme
 
 @Composable
-fun CoinScreen(coin: CoinUi) {
+fun CoinScreen(viewModel: CoinViewModel = viewModel()) {
+    val state = viewModel.uiState.observeAsState()
+
+    state.value?.let {
+        when(it) {
+            is CoinUiState.Loading -> LoadingContent()
+            is CoinUiState.Error -> ErrorContent(
+                message = it.message,
+                onRetryClick = { viewModel.onRetryButtonClick() }
+            )
+            is CoinUiState.Success -> CoinContent(coin = it.coin)
+        }
+    }
+
+}
+
+@Composable
+fun LoadingContent() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        CircularProgressIndicator()
+    }
+}
+
+@Composable
+fun ErrorContent(
+    message: String,
+    onRetryClick: () -> Unit
+) {
+
+}
+
+@Composable
+fun CoinContent(coin: CoinUi) {
     Surface {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -55,9 +94,9 @@ fun CoinScreen(coin: CoinUi) {
 
 @Preview
 @Composable
-fun CoinScreenPreview() {
+fun CoinContentPreview() {
     Material3Theme {
-        CoinScreen(
+        CoinContent(
             coin = CoinUi(
                 name = "Bitcoin",
                 marketCap = "$ 1.000.435",

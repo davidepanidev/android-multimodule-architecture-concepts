@@ -82,41 +82,39 @@ fun ErrorContent(
 
 @Composable
 fun CoinContent(coin: CoinUi) {
-    Surface {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text(text = stringResource(id = R.string.most_capitalized_coin))
         Column(
-            modifier = Modifier.fillMaxSize()
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
         ) {
-            Text(text = stringResource(id = R.string.most_capitalized_coin))
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-            ) {
-                Image(
-                    painter = rememberImagePainter(data = coin.imageUrl),
-                    contentDescription = stringResource(id = R.string.coin_image_description),
-                    modifier = Modifier.size(100.dp)
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-                Text(
-                    text = coin.name,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-                Text(
-                    text = coin.marketCap,
-                    style = MaterialTheme.typography.headlineMedium
-                )
-            }
+            Image(
+                painter = rememberImagePainter(data = coin.imageUrl),
+                contentDescription = stringResource(id = R.string.coin_image_description),
+                modifier = Modifier.size(100.dp)
+            )
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(
+                text = coin.name,
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(
+                text = coin.marketCap,
+                style = MaterialTheme.typography.headlineMedium
+            )
         }
     }
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CoinContentPreview() {
     Material3Theme {

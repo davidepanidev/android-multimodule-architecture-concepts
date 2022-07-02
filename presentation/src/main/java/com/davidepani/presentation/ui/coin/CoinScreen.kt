@@ -2,12 +2,11 @@ package com.davidepani.presentation.ui.coin
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -20,6 +19,7 @@ import com.davidepani.presentation.R
 import com.davidepani.presentation.models.CoinUi
 import com.davidepani.presentation.models.CoinUiState
 import com.davidepani.presentation.theme.Material3Theme
+import kotlinx.coroutines.launch
 
 @Composable
 fun CoinScreen(viewModel: CoinViewModel = viewModel()) {
@@ -40,9 +40,9 @@ fun CoinScreen(viewModel: CoinViewModel = viewModel()) {
 
 @Composable
 fun LoadingContent() {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator()
     }
@@ -53,6 +53,30 @@ fun ErrorContent(
     message: String,
     onRetryClick: () -> Unit
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+    val actionLabel = stringResource(id = R.string.retry)
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        SnackbarHost(
+            hostState = snackbarHostState
+        )
+    }
+
+    coroutineScope.launch {
+        val result = snackbarHostState.showSnackbar(
+            message = message,
+            actionLabel = actionLabel,
+            duration = SnackbarDuration.Indefinite
+        )
+
+        if (result == SnackbarResult.ActionPerformed) {
+            onRetryClick()
+        }
+    }
 
 }
 

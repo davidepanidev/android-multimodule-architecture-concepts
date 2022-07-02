@@ -116,7 +116,7 @@ fun CoinContent(coin: CoinUi) {
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun CoinContentPreview() {
     Material3Theme {

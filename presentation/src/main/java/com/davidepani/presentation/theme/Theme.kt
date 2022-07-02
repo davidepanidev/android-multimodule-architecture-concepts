@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import dagger.hilt.android.internal.managers.ViewComponentManager
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -52,7 +51,7 @@ fun Material3Theme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            ((view.context as ViewComponentManager.FragmentContextWrapper).baseContext as Activity).window.statusBarColor = colorScheme.primary.toArgb()
+            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
         }
     }

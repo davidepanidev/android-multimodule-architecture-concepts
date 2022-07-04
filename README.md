@@ -9,7 +9,7 @@ _Android Multimodule Architecture Concepts_ is a project to showcase different a
 
 These layers are implemented using 3 separate modules to increase decoupling and separation of concerns. The dependencies between the modules are set so that the _data layer_ is completely invisible to the _presentation layer_ and vice versa.
 
-## Architecture concepts 
+## Architecture concepts 🏛
 
 The project hosts each architecture concept in a separate branch (this _main_ branch only contains an empty template). 
 
@@ -23,7 +23,7 @@ The project hosts each architecture concept in a separate branch (this _main_ br
 * [**Clean Architecture Compose Concept**](https://github.com/davide-pani/android-multimodule-architecture-concepts/tree/clean-architecture-compose-concept): fork of the [**Clean Architecture Concept**](https://github.com/davide-pani/android-multimodule-architecture-concepts/tree/clean-architecture-concept) with the UI built with Jetpack Compose 🚀.
   
   
-## Screenshots
+## Screenshots 📸
   
 The App retrieves data from the [CoinGecko API](https://www.coingecko.com/en/api) and shows the current most capitalized cryptocurrency (which of course is Bitcoin 😄).
   

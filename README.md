@@ -1,5 +1,8 @@
 # Android Multimodule Architecture Concepts
 
+[![Kotlin](https://img.shields.io/badge/kotlin-1.7.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![License](https://img.shields.io/github/license/davide-pani/kotlin-extensions?color=orange)]()
+
 _Android Multimodule Architecture Concepts_ is a project to showcase different architectural approaches 🏛 to developing multi-modular Android apps 📱.
 
 🔎  The architecture proposed consists of 3 different layers:

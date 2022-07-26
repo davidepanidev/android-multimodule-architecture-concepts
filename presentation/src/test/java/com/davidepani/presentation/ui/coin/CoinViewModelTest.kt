@@ -1,6 +1,6 @@
 package com.davidepani.presentation.ui.coin
 
-import com.davidepani.androidextensions.tests.BaseViewModelTest
+import com.davidepani.androidextensions.tests.BaseCoroutineTestWithTestDispatcherProviderAndInstantTaskExecutorRule
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.entities.Result
 import com.davidepani.domain.usecases.GetMostCapitalizedCoinUseCase
@@ -11,6 +11,7 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -18,7 +19,9 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
 @ExperimentalCoroutinesApi
-class CoinViewModelTest : BaseViewModelTest() {
+class CoinViewModelTest : BaseCoroutineTestWithTestDispatcherProviderAndInstantTaskExecutorRule(
+    dispatcher = UnconfinedTestDispatcher()
+) {
 
     private lateinit var cut: CoinViewModel
     @MockK

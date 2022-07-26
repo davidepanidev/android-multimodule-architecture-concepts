@@ -4,7 +4,8 @@ import com.davidepani.data.BITCOIN_RESOURCE_JSON_FILENAME
 import com.davidepani.data.models.CoinApiResponse
 import com.davidepani.domain.entities.Coin
 import com.davidepani.kotlinextensions.deserializeJsonFileFromSystemResources
-import com.davidepani.kotlinextensions.utils.deserializer.GsonDeserializer
+import com.davidepani.kotlinextensions.utils.serialization.SerializationManager
+import com.davidepani.kotlinextensions.utils.serialization.gson.GsonSerializationManager
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
@@ -14,7 +15,7 @@ class DataMapperTest {
 
     private lateinit var cut: DataMapper
 
-    private val deserializer = GsonDeserializer()
+    private val deserializer: SerializationManager = GsonSerializationManager()
     private val bitcoinApiResponse: CoinApiResponse = BITCOIN_RESOURCE_JSON_FILENAME.deserializeJsonFileFromSystemResources(deserializer)
 
     @Before

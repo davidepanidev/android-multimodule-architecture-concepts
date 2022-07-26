@@ -8,7 +8,8 @@ import com.davidepani.data.models.CoinApiResponse
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.entities.Result
 import com.davidepani.kotlinextensions.deserializeJsonFileFromSystemResources
-import com.davidepani.kotlinextensions.utils.deserializer.GsonDeserializer
+import com.davidepani.kotlinextensions.utils.serialization.SerializationManager
+import com.davidepani.kotlinextensions.utils.serialization.gson.GsonSerializationManager
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
@@ -28,7 +29,7 @@ class CoinRepositoryImplTest {
     @MockK private lateinit var coinGeckoApiService: CoinGeckoApiService
     @MockK private lateinit var mapper: DataMapper
 
-    private val deserializer = GsonDeserializer()
+    private val deserializer: SerializationManager = GsonSerializationManager()
     private val bitcoinApiResponse: CoinApiResponse = BITCOIN_RESOURCE_JSON_FILENAME.deserializeJsonFileFromSystemResources(deserializer)
     private val ethereumApiResponse: CoinApiResponse = ETHEREUM_RESOURCE_JSON_FILENAME.deserializeJsonFileFromSystemResources(deserializer)
 

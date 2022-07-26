@@ -1,30 +1,33 @@
 package com.davidepani.presentation.ui.coin
 
-import com.davidepani.androidextensions.tests.BaseViewModelTest
+import com.davidepani.androidextensions.tests.BaseCoroutineTestWithTestDispatcherProviderAndInstantTaskExecutorRule
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.entities.Result
 import com.davidepani.domain.usecases.GetMostCapitalizedCoinUseCase
 import com.davidepani.presentation.mappers.UiMapper
 import com.davidepani.presentation.models.CoinUi
+import com.davidepani.presentation.models.CoinUiState
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
+import strikt.assertions.isA
 import strikt.assertions.isEqualTo
 
 @ExperimentalCoroutinesApi
-class CoinViewModelTest : BaseViewModelTest() {
+class CoinViewModelTest : BaseCoroutineTestWithTestDispatcherProviderAndInstantTaskExecutorRule(
+    UnconfinedTestDispatcher()
+) {
 
     private lateinit var cut: CoinViewModel
-    @MockK
-    private lateinit var getMostCapitalizedCoinUseCase: GetMostCapitalizedCoinUseCase
-    @MockK
-    private lateinit var mapper: UiMapper
+    @MockK private lateinit var getMostCapitalizedCoinUseCase: GetMostCapitalizedCoinUseCase
+    @MockK private lateinit var mapper: UiMapper
 
     @Before
     fun setUp() {
@@ -57,10 +60,9 @@ class CoinViewModelTest : BaseViewModelTest() {
 
         cut.getCoin()
 
-        expectThat(cut.coinLD.value).isEqualTo(expectedCoin)
-        expectThat(cut.errorLD.value).isEqualTo(null)
-        expectThat(cut.isProgressVisible.value).isEqualTo(false)
-        expectThat(cut.isCoinContentVisible.value).isEqualTo(true)
+        expectThat(cut.uiState.value).isA<CoinUiState.Success>().and {
+            get { this.coin }.isEqualTo(expectedCoin)
+        }
     }
 
     @Test
@@ -70,10 +72,9 @@ class CoinViewModelTest : BaseViewModelTest() {
 
         cut.getCoin()
 
-        expectThat(cut.errorLD.value).isEqualTo(expectedException.message)
-        expectThat(cut.coinLD.value).isEqualTo(null)
-        expectThat(cut.isCoinContentVisible.value).isEqualTo(false)
-        expectThat(cut.isProgressVisible.value).isEqualTo(false)
+        expectThat(cut.uiState.value).isA<CoinUiState.Error>().and {
+            get { this.message }.isEqualTo(expectedException.toString())
+        }
     }
 
     @Test
@@ -97,10 +98,9 @@ class CoinViewModelTest : BaseViewModelTest() {
 
         cut.onRetryButtonClick()
 
-        expectThat(cut.coinLD.value).isEqualTo(expectedCoin)
-        expectThat(cut.errorLD.value).isEqualTo(null)
-        expectThat(cut.isProgressVisible.value).isEqualTo(false)
-        expectThat(cut.isCoinContentVisible.value).isEqualTo(true)
+        expectThat(cut.uiState.value).isA<CoinUiState.Success>().and {
+            get { this.coin }.isEqualTo(expectedCoin)
+        }
     }
 
 }

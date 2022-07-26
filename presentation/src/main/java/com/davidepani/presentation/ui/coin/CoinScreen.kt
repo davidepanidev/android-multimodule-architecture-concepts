@@ -1,6 +1,5 @@
 package com.davidepani.presentation.ui.coin
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -14,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImage
 import com.davidepani.presentation.R
 import com.davidepani.presentation.models.CoinUi
 import com.davidepani.presentation.models.CoinUiState
@@ -93,8 +92,8 @@ fun CoinContent(coin: CoinUi) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            Image(
-                painter = rememberImagePainter(data = coin.imageUrl),
+            AsyncImage(
+                model = coin.imageUrl,
                 contentDescription = stringResource(id = R.string.coin_image_description),
                 modifier = Modifier.size(100.dp)
             )

@@ -14,8 +14,8 @@ buildscript {
         arch_core_testing_version = "2.1.0"
         strikt_version = "0.34.1"
         retrofit_version = "2.9.0"
-        android_extensions_version = "1.2.3"
-        kotlin_extensions_version = "1.2"
+        android_extensions_version = "1.2.4"
+        kotlin_extensions_version = "1.5.1"
         compose_version = '1.2.0-rc03'
     }
 

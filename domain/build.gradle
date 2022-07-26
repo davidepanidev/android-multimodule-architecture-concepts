@@ -9,6 +9,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+compileKotlin {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 dependencies {
 
     implementation "com.github.davide-pani:kotlin-extensions:$kotlin_extensions_version"

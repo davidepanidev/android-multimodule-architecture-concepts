@@ -28,6 +28,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        allWarningsAsErrors = true
     }
 
     buildFeatures {
@@ -79,7 +80,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_ktx_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "io.coil-kt:coil-compose:1.4.0"
+    implementation "io.coil-kt:coil-compose:2.1.0"
 
     // Tests
     testImplementation "junit:junit:$junit_version"

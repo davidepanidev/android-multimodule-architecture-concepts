@@ -16,7 +16,7 @@ class UiMapperTest {
         }
 
         override fun format(amount: Number, customCurrencySymbol: String): String {
-            TODO("Not yet implemented")
+            return fakeFormattedAmount
         }
     }
 

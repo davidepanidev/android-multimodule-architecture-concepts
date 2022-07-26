@@ -14,6 +14,10 @@ class UiMapperTest {
         override fun format(amount: Number): String {
             return fakeFormattedAmount
         }
+
+        override fun format(amount: Number, customCurrencySymbol: String): String {
+            TODO("Not yet implemented")
+        }
     }
 
     private val cut = UiMapper(

@@ -6,7 +6,8 @@ import com.davidepani.domain.ETHEREUM_RESOURCE_JSON_FILENAME
 import com.davidepani.domain.entities.Coin
 import com.davidepani.domain.mappers.DataMapper
 import com.davidepani.kotlinextensions.deserializeJsonFileFromSystemResources
-import com.davidepani.kotlinextensions.utils.deserializer.GsonDeserializer
+import com.davidepani.kotlinextensions.utils.serialization.SerializationManager
+import com.davidepani.kotlinextensions.utils.serialization.gson.GsonSerializationManager
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
@@ -25,7 +26,7 @@ class GetMostCapitalizedCoinUseCaseTest {
     @MockK private lateinit var coinRepository: CoinRepository
     @MockK private lateinit var dataMapper: DataMapper
 
-    private val deserializer = GsonDeserializer()
+    private val deserializer: SerializationManager = GsonSerializationManager()
     private val ethereumApiResponse: CoinApiResponse = ETHEREUM_RESOURCE_JSON_FILENAME.deserializeJsonFileFromSystemResources(deserializer)
 
     @Before

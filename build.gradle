@@ -16,7 +16,7 @@ buildscript {
         retrofit_version = "2.9.0"
         android_extensions_version = "1.2.4"
         kotlin_extensions_version = "1.5.1"
-        compose_version = '1.2.0-rc03'
+        compose_version = '1.2.0'
     }
 
     dependencies {

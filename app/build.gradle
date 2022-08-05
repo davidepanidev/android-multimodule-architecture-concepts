@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.davidepani.androidmultimodulearchitectureconcepts"
+        applicationId "com.github.davidepanidev.androidmultimodulearchitectureconcepts"
         minSdk 23
         targetSdk 32
         versionCode 1
@@ -51,8 +51,8 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation "com.github.davide-pani:android-extensions:$android_extensions_version"
-    implementation "com.github.davide-pani:kotlin-extensions:$kotlin_extensions_version"
+    implementation "com.github.davidepanidev:android-extensions:$android_extensions_version"
+    implementation "com.github.davidepanidev:kotlin-extensions:$kotlin_extensions_version"
 
     implementation "com.google.dagger:hilt-android:$dagger_version"
     kapt "com.google.dagger:hilt-compiler:$dagger_version"

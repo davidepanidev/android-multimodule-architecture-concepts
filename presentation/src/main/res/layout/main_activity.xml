@@ -10,6 +10,6 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.davidepani.presentation.ui.coin.CoinFragment" />
+        android:name="com.github.davidepanidev.presentation.ui.coin.CoinFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

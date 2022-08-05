@@ -41,10 +41,10 @@ dependencies {
 
     implementation(project(":domain"))
 
-    // davide-pani
-    implementation "com.github.davide-pani:android-extensions:$android_extensions_version"
-    implementation "com.github.davide-pani:kotlin-extensions:$kotlin_extensions_version"
-    implementation 'com.github.davide-pani:android-architectures:1.0'
+    // davidepanidev
+    implementation "com.github.davidepanidev:android-extensions:$android_extensions_version"
+    implementation "com.github.davidepanidev:kotlin-extensions:$kotlin_extensions_version"
+    implementation 'com.github.davidepanidev:android-architectures:0.1'
 
     // Dagger - Hilt
     implementation "com.google.dagger:hilt-android:$dagger_version"
@@ -52,8 +52,8 @@ dependencies {
 
     // ktx libraries
     implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.activity:activity-ktx:1.5.0"
-    implementation "androidx.fragment:fragment-ktx:1.5.0"
+    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ktx_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
 

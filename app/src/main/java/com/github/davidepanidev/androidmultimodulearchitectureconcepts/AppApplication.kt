@@ -1,4 +1,4 @@
-package com.davidepani.androidmultimodulearchitectureconcepts
+package com.github.davidepanidev.androidmultimodulearchitectureconcepts
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

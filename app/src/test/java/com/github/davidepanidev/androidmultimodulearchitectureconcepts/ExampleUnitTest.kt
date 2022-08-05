@@ -1,4 +1,4 @@
-package com.davidepani.androidmultimodulearchitectureconcepts
+package com.github.davidepanidev.androidmultimodulearchitectureconcepts
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

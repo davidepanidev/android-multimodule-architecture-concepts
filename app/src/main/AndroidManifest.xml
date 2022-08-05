@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.davidepani.androidmultimodulearchitectureconcepts">
+    package="com.github.davidepanidev.androidmultimodulearchitectureconcepts">
 
     <application
         android:name=".AppApplication"

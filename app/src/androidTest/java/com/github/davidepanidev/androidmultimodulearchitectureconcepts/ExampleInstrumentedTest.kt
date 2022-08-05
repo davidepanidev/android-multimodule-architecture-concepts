@@ -1,4 +1,4 @@
-package com.davidepani.androidmultimodulearchitectureconcepts
+package com.github.davidepanidev.androidmultimodulearchitectureconcepts
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -18,7 +18,7 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals(
-            "com.davidepani.androidmultimodulearchitectureconcepts",
+            "com.github.davidepanidev.androidmultimodulearchitectureconcepts",
             appContext.packageName
         )
     }

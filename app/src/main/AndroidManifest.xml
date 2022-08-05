@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.davidepani.androidmultimodulearchitectureconcepts">
+    package="com.github.davidepanidev.androidmultimodulearchitectureconcepts">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AndroidMultimoduleArchitectureConcepts" >
 
         <activity
-            android:name="com.davidepani.presentation.MainActivity"
+            android:name="com.github.davidepanidev.presentation.MainActivity"
             android:exported="true">
 
             <intent-filter>

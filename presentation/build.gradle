@@ -44,7 +44,7 @@ dependencies {
     // davidepanidev
     implementation "com.github.davidepanidev:android-extensions:$android_extensions_version"
     implementation "com.github.davidepanidev:kotlin-extensions:$kotlin_extensions_version"
-    implementation 'com.github.davidepanidev:android-architectures:0.1'
+    implementation 'com.github.davidepanidev:android-architectures:0.2'
 
     // Dagger - Hilt
     implementation "com.google.dagger:hilt-android:$dagger_version"

@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
+import com.github.davidepanidev.androidarchitectures.viewbinding.BaseViewBindingHandlerFragment
 import com.github.davidepanidev.androidextensions.utils.imageloader.ImageLoader
 import com.github.davidepanidev.androidextensions.views.loadImageFromUrl
 import com.github.davidepanidev.presentation.R
 import com.github.davidepanidev.presentation.databinding.CoinFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.davidepanidev.androidarchitectures.viewbinding.BaseViewBindingHandlerFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint

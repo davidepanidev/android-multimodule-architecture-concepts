@@ -3,9 +3,9 @@
 [![Kotlin](https://img.shields.io/badge/kotlin-1.7.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![License](https://img.shields.io/github/license/davidepanidev/android-multimodule-architecture-concepts?color=orange)]()
 
-_Android Multimodule Architecture Concepts_ is a project to showcase different architectural approaches 🏛 to developing multi-modular Android apps 📱.
+Showcase of several architectural approaches 🏛 to developing multi-modular Android apps 📱.
 
-🔎  The architecture proposed consists of 3 different layers:
+🔎  The architectures proposed consist of 3 different layers:
 * **Presentation layer**: contains all the Android UI framework components (e.g. Activities, Fragments, ViewModels...) and the related resources (e.g. images, strings...).
 * **Domain layer**: contains the platform-independent business logic and models.
 * **Data layer**: contains the repositories, the data sources api implementations and the corresponding api-specific models.
